@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Berry Stall — Portfolio</title>
+<title>Anne Animas — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Caveat+Brush&display=swap" rel="stylesheet">
@@ -74,33 +74,38 @@ h1 .shine{position:relative;display:inline-block;background:linear-gradient(100d
 .ribbon:hover .track{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
 
-/* STALL COUNTER */
-.counter{position:relative;margin-top:-1.5rem;padding:6rem 1.2rem 5rem;background:
-  linear-gradient(90deg,rgba(255,255,255,.55) 50%,transparent 50%) 0 0/60px 60px,
-  linear-gradient(rgba(255,255,255,.55) 50%,transparent 50%) 0 0/60px 60px,var(--pink)}
-.counter h2{text-align:center;font-family:'Caveat Brush';font-weight:400;font-size:clamp(2rem,5vw,3.2rem);color:var(--deep);background:#fff;width:max-content;max-width:90%;margin:0 auto 2.5rem;padding:.3rem 1.8rem;border-radius:999px;border:3px dashed var(--berry);transform:rotate(1.5deg)}
-.crates{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.6rem;max-width:1050px;margin:0 auto}
-.crate{position:relative;text-decoration:none;background:#fff;border-radius:18px 18px 12px 12px;border:3px solid var(--berry);padding:1.4rem 1rem 1.2rem;text-align:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1);will-change:transform}
-.crate::before{content:"";position:absolute;inset:auto -3px -3px -3px;height:40%;background:repeating-linear-gradient(0deg,#ffd9a8 0 8px,#f7c58a 8px 10px);border-radius:0 0 12px 12px;z-index:0;opacity:.0}
-.crate .ico{width:84px;height:84px;margin:0 auto .6rem;border-radius:50%;display:grid;place-items:center;background:var(--c,var(--butter));transition:transform .4s}
-.crate:hover .ico{transform:rotate(360deg) scale(1.1)}
-.crate h3{font-size:1.25rem;margin-bottom:.2rem}
-.crate p{font-size:.95rem;opacity:.85}
-.crate .tag{position:absolute;top:-14px;right:14px;width:34px;height:34px}
-.crate:hover{transform:translateY(-8px) rotate(var(--r,-2deg))}
+/* JAM-JAR SHELF */
+.counter{position:relative;margin-top:-1.5rem;padding:6rem 1.2rem 5rem;background:radial-gradient(circle,#fff 3px,transparent 4px) 0 0/34px 34px,var(--pink)}
+.counter h2{text-align:center;font-family:'Caveat Brush';font-weight:400;font-size:clamp(2rem,5vw,3.2rem);color:var(--deep);background:#fff;width:max-content;max-width:90%;margin:0 auto .6rem;padding:.3rem 1.8rem;border-radius:999px;border:3px dashed var(--berry);transform:rotate(1.5deg)}
+.counter .hint{text-align:center;margin-bottom:2.2rem;color:var(--deep)}
+.shelf{display:flex;justify-content:center;flex-wrap:wrap;gap:2.6rem 2.2rem;max-width:1000px;margin:0 auto}
+.jar{position:relative;display:block;width:170px;padding-bottom:26px;text-decoration:none;text-align:center}
+.jar::after{content:"";position:absolute;left:-16px;right:-16px;bottom:0;height:24px;background:repeating-linear-gradient(90deg,#f6cf9f 0 46px,#ecbc86 46px 48px);border-radius:7px;box-shadow:0 8px 0 rgba(201,64,106,.22)}
+.glass{position:relative;height:178px;margin-top:34px;border-radius:26px 26px 36px 36px;border:4px solid #fff;background:linear-gradient(100deg,rgba(255,255,255,.75) 0 10%,transparent 10% 18%,rgba(255,255,255,.3) 18% 24%,transparent 24%),var(--j);box-shadow:0 0 0 3px var(--j),inset 0 -16px 0 rgba(255,255,255,.28);z-index:1;transform-origin:50% 100%}
+.jb{position:absolute;opacity:.92}
+.lid{position:absolute;left:50%;top:0;width:132px;height:50px;margin-left:-66px;z-index:3;border-radius:50% 50% 14px 14px/70% 70% 14px 14px;background:linear-gradient(90deg,rgba(255,255,255,.5) 50%,transparent 50%) 0 0/16px 16px,linear-gradient(rgba(255,255,255,.5) 50%,transparent 50%) 0 0/16px 16px,var(--lc);box-shadow:0 4px 0 rgba(107,45,68,.15);transition:transform .35s cubic-bezier(.3,1.7,.5,1)}
+.lid svg{position:absolute;left:50%;bottom:-8px;margin-left:-22px}
+.label{position:absolute;left:50%;top:44px;width:120px;margin-left:-60px;padding:.4rem .3rem;transform:rotate(-3deg);background:var(--milk);border:2px dashed var(--berry);border-radius:10px;font-weight:700;font-size:1rem;line-height:1.1;color:var(--ink)}
+.label small{display:block;font-weight:400;font-size:.7rem;margin-top:.2rem;color:var(--deep)}
+.tip{position:absolute;left:50%;top:-4px;transform:translate(-50%,10px) scale(.6);opacity:0;pointer-events:none;white-space:nowrap;background:#fff;border:2px solid var(--berry);border-radius:12px;padding:.2rem .8rem;font-family:'Caveat Brush';font-size:1.1rem;color:var(--deep);transition:.25s cubic-bezier(.3,1.7,.5,1);z-index:5}
+.jar:hover .tip,.jar:focus-visible .tip{opacity:1;transform:translate(-50%,-32px) scale(1)}
+.jar:hover .lid,.jar:focus-visible .lid{transform:translateY(-18px) rotate(-9deg)}
+.jar:hover .glass,.jar:focus-visible .glass{animation:jig .5s}
+.jar:hover .jb{animation:bob 1.2s ease-in-out infinite}
+@keyframes jig{25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
 
 /* PRINTER */
 .press{padding:5rem 1.2rem 6rem;text-align:center;background:linear-gradient(var(--pink) 0,var(--milk) 90px)}
 .press h2{font-family:'Caveat Brush';font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--deep)}
 .press .sub{margin:.4rem 0 2rem}
-.printer{position:relative;width:min(340px,86vw);margin:0 auto;height:300px}
-.paper{position:absolute;left:50%;top:40px;width:210px;height:0;margin-left:-105px;background:#fff;border:2px solid var(--pink);border-radius:6px 6px 0 0;overflow:hidden;z-index:1;transition:height 2.6s steps(26);box-shadow:0 0 0 2px #fff}
-.printer.go .paper{height:230px}
-.paper div{padding:.9rem .8rem;text-align:left;font-size:.8rem;width:100%}
+.printer{position:relative;width:min(340px,86vw);margin:0 auto;height:370px}
+.paper{position:absolute;left:50%;top:40px;width:230px;height:0;margin-left:-115px;background:#fff;border:2px solid var(--pink);border-radius:6px 6px 0 0;overflow:hidden;z-index:1;transition:height 3.2s steps(32);box-shadow:0 0 0 2px #fff}
+.printer.go .paper,.printer.done .paper{height:310px}
+.paper div{padding:.8rem .9rem;text-align:left;font-size:.72rem;width:100%;height:310px}.paper p{margin:.1rem 0 .5rem;line-height:1.3}.paper em{font-style:normal;color:var(--deep);font-weight:500}
 .paper b{font-family:'Caveat Brush';font-size:1.3rem;color:var(--berry);font-weight:400;display:block}
 .paper i{display:block;height:6px;border-radius:3px;background:var(--pink);margin:.5rem 0;opacity:.7}
 .body{position:absolute;left:0;right:0;top:0;height:120px;background:var(--lilac);border:3px solid var(--ink);border-radius:20px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 1.2rem 1rem}
-.slot{position:absolute;left:50%;bottom:34px;width:240px;margin-left:-120px;height:12px;background:var(--ink);border-radius:6px}
+.slot{position:absolute;z-index:3;left:50%;top:106px;width:240px;margin-left:-120px;height:12px;background:var(--ink);border-radius:6px}
 .led{width:14px;height:14px;border-radius:50%;background:#bbb;border:2px solid var(--ink)}
 .printer.go .led{background:#6ee79b;animation:blink .35s infinite}
 @keyframes blink{50%{opacity:.3}}
@@ -108,7 +113,7 @@ h1 .shine{position:relative;display:inline-block;background:linear-gradient(100d
 .printer.done .body{animation:none}
 @keyframes buzz{50%{transform:translate(1px,1px)}}
 .press .btn{margin-top:1rem}
-.press .btn[disabled]{opacity:.6;pointer-events:none}
+.btn[hidden]{display:none}.press .btn[disabled]{opacity:.6;pointer-events:none}
 
 /* basket + footer */
 .basket{position:fixed;left:14px;bottom:14px;z-index:80;background:#fff;border:3px solid var(--berry);border-radius:999px;padding:.35rem .9rem .35rem .5rem;display:flex;align-items:center;gap:.4rem;font-weight:700;box-shadow:0 4px 0 var(--deep)}
@@ -117,7 +122,7 @@ h1 .shine{position:relative;display:inline-block;background:linear-gradient(100d
 footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-family:'Caveat Brush';font-size:1.3rem;color:var(--deep)}
 
 @media(max-width:640px){.bear .sign{display:none}.fl.hide-sm{display:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.printer .paper{height:230px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.printer .paper{height:310px}}
 </style>
 </head>
 <body>
@@ -152,11 +157,11 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
 <main>
 <section class="hero" id="top">
   <div class="hero-inner">
-    <span class="hand">hello! I'm [Your Name] ♡</span>
+    <span class="hand">hello! I'm Anne Animas ♡</span>
     <h1>Fresh-picked <span class="shine">design</span></h1>
-    <p class="lede">Graphic design, website UI, web development and branding, made small-batch and sweet. Pick a berry, peek in the crates, stay a while.</p>
+    <p class="lede">Marketing associate and creative designer from Quezon City. I turn business ideas into cohesive brand visuals, website designs and marketing collateral, made small-batch and sweet. Pick a berry and stay a while.</p>
     <div class="btns">
-      <a class="btn" href="#portfolio">Peek in the crates</a>
+      <a class="btn" href="#portfolio">Peek in the jars</a>
       <a class="btn alt" href="#contact">Say hi</a>
     </div>
   </div>
@@ -182,27 +187,28 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
 <div class="ribbon" aria-hidden="true"><div class="track" id="track"></div></div>
 
 <section class="counter" id="portfolio">
-  <h2>Today's crates</h2>
-  <div class="crates">
-    <a class="crate" href="#" style="--c:var(--butter);--r:-3deg">
-      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
-      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 100"><use href="#flower"/></svg></div>
-      <h3>Graphic Design</h3><p>Posters, packaging &amp; little things with big charm.</p>
+  <h2>The jam shelf</h2>
+  <p class="hint">Four jars, packed with my work. Hover to peek inside!</p>
+  <div class="shelf">
+    <a class="jar" href="#portfolio" style="--j:#ffb3c7;--lc:#ff6f91">
+      <span class="tip">open me ♡</span>
+      <div class="lid"><svg class="i" width="44" height="30" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
+      <div class="glass"><div class="label">Graphic Design<small>collateral · socials · print</small></div></div>
     </a>
-    <a class="crate" href="#" style="--c:var(--lilac);--r:2deg">
-      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
-      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 110"><use href="#berry"/></svg></div>
-      <h3>UI Design</h3><p>Website layouts that feel soft, clear and playful.</p>
+    <a class="jar" href="#portfolio" style="--j:#d9c6ff;--lc:#a58cf0">
+      <span class="tip">open me ♡</span>
+      <div class="lid"><svg class="i" width="44" height="30" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
+      <div class="glass"><div class="label">UI Design<small>website layouts in Figma</small></div></div>
     </a>
-    <a class="crate" href="#" style="--c:#d6f3dd;--r:-2deg">
-      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
-      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 100"><text x="50" y="66" font-size="52" text-anchor="middle" font-family="Fredoka" font-weight="700" fill="#c9406a">&lt;/&gt;</text></svg></div>
-      <h3>Website Development</h3><p>Designs baked into fast, interactive sites.</p>
+    <a class="jar" href="#portfolio" style="--j:#bfeccb;--lc:#6bbd82">
+      <span class="tip">open me ♡</span>
+      <div class="lid"><svg class="i" width="44" height="30" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
+      <div class="glass"><div class="label">Website Dev<small>React · HTML · CSS</small></div></div>
     </a>
-    <a class="crate" href="#" style="--c:var(--pink);--r:3deg">
-      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
-      <div class="ico"><svg class="i" width="56" height="40" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
-      <h3>Branding</h3><p>Logos, colors &amp; voices tied up with a bow.</p>
+    <a class="jar" href="#portfolio" style="--j:#ffe69a;--lc:#ffb86b">
+      <span class="tip">open me ♡</span>
+      <div class="lid"><svg class="i" width="44" height="30" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
+      <div class="glass"><div class="label">Branding<small>identity · brand systems</small></div></div>
     </a>
   </div>
 </section>
@@ -212,21 +218,27 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
   <p class="sub">Tap the button and watch it print.</p>
   <div class="printer" id="printer">
     <div class="paper"><div>
-      <b>[Your Name]</b>
-      <span>Designer &amp; developer</span>
-      <i></i><i style="width:80%"></i><i style="width:90%"></i><i style="width:60%"></i>
-      <b style="margin-top:.6rem">Hello!</b>
-      <i style="width:85%"></i><i></i><i style="width:70%"></i>
-      <svg class="i" width="34" height="38" viewBox="0 0 100 110" style="margin:.5rem auto 0"><use href="#berry"/></svg>
+      <b>Anne Animas</b>
+      <p><em>Marketing Associate</em><br>Marketing Communications &amp; Creative Design</p>
+      <b>Now</b>
+      <p><em>Gen G Group of Companies</em><br>Collateral, brand &amp; web design for 3 brands, 2026–now</p>
+      <b>Before</b>
+      <p><em>Milkyway Control &amp; Power</em><br>Web dev intern (React, Supabase, Figma) &amp; HR admin, 2025</p>
+      <b>School</b>
+      <p>BS Computer Engineering, Bulacan State University, 2021–2026</p>
+      <b>Tools</b>
+      <p>Canva · Figma · React.js · Google Workspace</p>
+      <svg class="i" width="30" height="33" viewBox="0 0 100 110" style="margin:0 auto"><use href="#berry"/></svg>
     </div></div>
     <div class="body"><span class="led"></span><span style="font-family:'Caveat Brush';font-size:1.3rem;color:var(--ink)">berry printer</span><span class="led"></span></div>
     <div class="slot"></div>
   </div>
   <button class="btn" id="printBtn" style="font-family:inherit;font-size:1rem;cursor:pointer">Print my resume</button>
+  <a class="btn alt" id="dl" href="Resume_Animas_Anne.pdf" download hidden style="margin-left:.5rem">Download the PDF</a>
 </section>
 </main>
 
-<footer id="contact">made with strawberries &amp; love ♡ [Your Name] · rates &amp; contact pages coming soon</footer>
+<footer id="contact">made with strawberries &amp; love ♡ Anne Animas · <a href="mailto:anne.animas01@gmail.com">anne.animas01@gmail.com</a> · rates page coming soon</footer>
 
 <div class="basket" id="basket" aria-live="polite"><svg class="i" width="26" height="28" viewBox="0 0 100 110"><use href="#berry"/></svg><span id="count">0</span> picked</div>
 
@@ -236,7 +248,7 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
   var $ = function(s){return document.querySelector(s)};
 
   // marquee
-  var words = ['graphic design','ui design','website development','branding'], h='';
+  var words = ['graphic design','ui design','website development','branding','marketing collateral'], h='';
   for(var r=0;r<2;r++) words.forEach(function(w){ h+='<span>'+w+' <svg width="22" height="24" viewBox="0 0 100 110"><use href="#berry"/></svg> <svg width="22" height="22" viewBox="0 0 100 100"><use href="#flower"/></svg></span>'; });
   $('#track').innerHTML = h + h;
 
@@ -300,14 +312,8 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
     eL.setAttribute('transform','translate('+dx+' '+dy+')'); eR.setAttribute('transform','translate('+dx+' '+dy+')');
   });
 
-  // crates tilt toward cursor
-  document.querySelectorAll('.crate').forEach(function(c){
-    c.addEventListener('mousemove', function(ev){
-      var r = c.getBoundingClientRect(), x=(ev.clientX-r.left)/r.width-.5, y=(ev.clientY-r.top)/r.height-.5;
-      c.style.transform='translateY(-8px) perspective(600px) rotateY('+(x*12)+'deg) rotateX('+(-y*12)+'deg)';
-    });
-    c.addEventListener('mouseleave', function(){ c.style.transform=''; });
-  });
+  // berries inside jars
+  document.querySelectorAll('.glass').forEach(function(g){var h='';for(var i=0;i<6;i++)h+='<svg class="jb" width="34" height="37" viewBox="0 0 100 110" style="left:'+(6+Math.random()*58)+'%;top:'+(52+Math.random()*26)+'%;transform:rotate('+(Math.random()*60-30)+'deg)"><use href="#berry"/></svg>';g.insertAdjacentHTML('afterbegin',h)});
 
   // printer
   var pr = $('#printer'), btn = $('#printBtn');
@@ -316,10 +322,10 @@ footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-fa
     btn.disabled = true; btn.textContent = 'Printing…'; pr.classList.add('go');
     setTimeout(function(){
       pr.classList.remove('go'); pr.classList.add('done');
-      btn.disabled = false; btn.textContent = 'Print it again!';
+      btn.disabled = false; btn.textContent = 'Print it again!'; $('#dl').hidden = false;
       var r = pr.getBoundingClientRect();
       for(var i=0;i<14;i++) sparkle(r.left+r.width/2+(Math.random()-.5)*260, r.top+60+Math.random()*200);
-    }, reduce?0:2700);
+    }, reduce?0:3300);
   });
 })();
 </script>
