@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Berry Stall — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&family=Caveat+Brush&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#fff6f3; --pink:#ffc2d1; --berry:#ff6f91; --deep:#c9406a;
+  --leaf:#a8dcb5; --butter:#fff1b8; --lilac:#e6d9ff; --ink:#6b2d44;
+  --scallop:50px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Fredoka',sans-serif;background:var(--milk);color:var(--ink);overflow-x:hidden;min-height:100vh}
+a{color:inherit}
+:focus-visible{outline:3px dashed var(--berry);outline-offset:3px}
+svg.i{display:block}
+
+/* AWNING */
+.awning{position:relative;z-index:5}
+.awning .top{height:46px;background:repeating-linear-gradient(90deg,var(--pink) 0 var(--scallop),#fff var(--scallop) calc(var(--scallop)*2))}
+.awning .fringe{height:calc(var(--scallop)/2);background:repeating-linear-gradient(90deg,var(--pink) 0 var(--scallop),#fff var(--scallop) calc(var(--scallop)*2));
+  -webkit-mask:radial-gradient(circle at calc(var(--scallop)/2) 0,#000 calc(var(--scallop)/2 - 1px),transparent calc(var(--scallop)/2)) 0 0/var(--scallop) 100%;
+  mask:radial-gradient(circle at calc(var(--scallop)/2) 0,#000 calc(var(--scallop)/2 - 1px),transparent calc(var(--scallop)/2)) 0 0/var(--scallop) 100%;
+  filter:drop-shadow(0 6px 0 rgba(201,64,106,.12))}
+nav{display:flex;justify-content:center;gap:clamp(.6rem,2.5vw,1.8rem);flex-wrap:wrap;padding:0 1rem;margin-top:-6px}
+nav a{position:relative;text-decoration:none;font-weight:500;background:#fff;border:2px solid var(--pink);border-radius:14px;padding:.45rem 1.1rem;margin-top:18px;transform-origin:top center;animation:sway 4s ease-in-out infinite;transition:background .2s,color .2s}
+nav a::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:18px;background:var(--pink)}
+nav a:nth-child(2){animation-delay:-.8s}nav a:nth-child(3){animation-delay:-1.6s}nav a:nth-child(4){animation-delay:-2.4s}
+nav a:hover{background:var(--berry);color:#fff;border-color:var(--berry)}
+@keyframes sway{50%{transform:rotate(2.2deg)}0%,100%{transform:rotate(-2.2deg)}}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 120px);display:grid;place-items:center;padding:3rem 1.2rem 7rem;text-align:center;
+  background:radial-gradient(circle at 20% 20%,var(--butter) 0,transparent 35%),radial-gradient(circle at 85% 70%,var(--lilac) 0,transparent 40%)}
+.hero-inner{position:relative;z-index:3;max-width:760px}
+.hand{font-family:'Caveat Brush',cursive;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--deep);transform:rotate(-3deg);display:inline-block}
+h1{font-size:clamp(2.8rem,10vw,6.6rem);line-height:.95;font-weight:700;letter-spacing:-.02em;color:var(--berry);text-shadow:3px 3px 0 #fff,6px 6px 0 var(--pink);margin:.4rem 0 1rem}
+h1 .shine{position:relative;display:inline-block;background:linear-gradient(100deg,var(--berry) 40%,#fff 50%,var(--berry) 60%) 200% 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4.5s ease-in-out infinite;text-shadow:none;filter:drop-shadow(3px 3px 0 #fff) drop-shadow(5px 5px 0 var(--pink))}
+@keyframes shimmer{0%,55%{background-position:200% 0}100%{background-position:-100% 0}}
+.lede{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:34rem;margin:0 auto 1.8rem;line-height:1.5}
+.btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:700;padding:.85rem 1.6rem;border-radius:999px;border:3px solid var(--berry);background:var(--berry);color:#fff;box-shadow:0 5px 0 var(--deep);transition:transform .15s,box-shadow .15s}
+.btn.alt{background:#fff;color:var(--berry)}
+.btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 8px 0 var(--deep)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--deep)}
+
+/* floating decor */
+.fl{position:absolute;z-index:1;transition:transform .25s ease-out;will-change:transform}
+.fl>*{display:block;animation:bob var(--d,6s) ease-in-out infinite}
+.fl.pick{cursor:pointer;z-index:4}
+.fl.pick:hover>*{filter:brightness(1.08) drop-shadow(0 0 8px #fff)}
+@keyframes bob{50%{transform:translateY(-14px) rotate(8deg)}0%,100%{transform:translateY(0) rotate(-6deg)}}
+.pop{position:fixed;z-index:60;pointer-events:none;font-family:'Caveat Brush';font-size:1.6rem;color:var(--deep);animation:rise 1s forwards}
+@keyframes rise{to{transform:translateY(-70px);opacity:0}}
+.spark{position:fixed;z-index:70;pointer-events:none;width:16px;height:16px;margin:-8px;animation:twinkle .8s forwards}
+@keyframes twinkle{0%{transform:scale(0) rotate(0)}40%{transform:scale(1.2) rotate(90deg);opacity:1}100%{transform:scale(0) rotate(200deg);opacity:0}}
+
+/* bear */
+.bear{position:absolute;right:max(1rem,5vw);bottom:-6px;width:clamp(130px,20vw,220px);z-index:4}
+.bear .sign{position:absolute;left:-58%;top:38%;background:#fff;border:3px solid var(--pink);border-radius:12px;padding:.3rem .7rem;font-family:'Caveat Brush';font-size:1.1rem;color:var(--deep);transform:rotate(-6deg);white-space:nowrap}
+.bear:hover .arm{animation:wave .5s 3}
+.arm{transform-origin:20px 40px}
+@keyframes wave{50%{transform:rotate(-25deg)}}
+
+/* RIBBON */
+.ribbon{position:relative;z-index:6;margin:-3.2rem -2vw 0;transform:rotate(-2deg);background:var(--berry);color:#fff;border-block:4px dashed #fff;overflow:hidden;padding:.7rem 0;box-shadow:0 8px 0 rgba(201,64,106,.18)}
+.track{display:flex;width:max-content;animation:marq 22s linear infinite;font-weight:700;font-size:1.3rem;white-space:nowrap}
+.track span{display:inline-flex;align-items:center;gap:1.2rem;padding-right:1.2rem}
+.ribbon:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* STALL COUNTER */
+.counter{position:relative;margin-top:-1.5rem;padding:6rem 1.2rem 5rem;background:
+  linear-gradient(90deg,rgba(255,255,255,.55) 50%,transparent 50%) 0 0/60px 60px,
+  linear-gradient(rgba(255,255,255,.55) 50%,transparent 50%) 0 0/60px 60px,var(--pink)}
+.counter h2{text-align:center;font-family:'Caveat Brush';font-weight:400;font-size:clamp(2rem,5vw,3.2rem);color:var(--deep);background:#fff;width:max-content;max-width:90%;margin:0 auto 2.5rem;padding:.3rem 1.8rem;border-radius:999px;border:3px dashed var(--berry);transform:rotate(1.5deg)}
+.crates{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.6rem;max-width:1050px;margin:0 auto}
+.crate{position:relative;text-decoration:none;background:#fff;border-radius:18px 18px 12px 12px;border:3px solid var(--berry);padding:1.4rem 1rem 1.2rem;text-align:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1);will-change:transform}
+.crate::before{content:"";position:absolute;inset:auto -3px -3px -3px;height:40%;background:repeating-linear-gradient(0deg,#ffd9a8 0 8px,#f7c58a 8px 10px);border-radius:0 0 12px 12px;z-index:0;opacity:.0}
+.crate .ico{width:84px;height:84px;margin:0 auto .6rem;border-radius:50%;display:grid;place-items:center;background:var(--c,var(--butter));transition:transform .4s}
+.crate:hover .ico{transform:rotate(360deg) scale(1.1)}
+.crate h3{font-size:1.25rem;margin-bottom:.2rem}
+.crate p{font-size:.95rem;opacity:.85}
+.crate .tag{position:absolute;top:-14px;right:14px;width:34px;height:34px}
+.crate:hover{transform:translateY(-8px) rotate(var(--r,-2deg))}
+
+/* PRINTER */
+.press{padding:5rem 1.2rem 6rem;text-align:center;background:linear-gradient(var(--pink) 0,var(--milk) 90px)}
+.press h2{font-family:'Caveat Brush';font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--deep)}
+.press .sub{margin:.4rem 0 2rem}
+.printer{position:relative;width:min(340px,86vw);margin:0 auto;height:300px}
+.paper{position:absolute;left:50%;top:40px;width:210px;height:0;margin-left:-105px;background:#fff;border:2px solid var(--pink);border-radius:6px 6px 0 0;overflow:hidden;z-index:1;transition:height 2.6s steps(26);box-shadow:0 0 0 2px #fff}
+.printer.go .paper{height:230px}
+.paper div{padding:.9rem .8rem;text-align:left;font-size:.8rem;width:100%}
+.paper b{font-family:'Caveat Brush';font-size:1.3rem;color:var(--berry);font-weight:400;display:block}
+.paper i{display:block;height:6px;border-radius:3px;background:var(--pink);margin:.5rem 0;opacity:.7}
+.body{position:absolute;left:0;right:0;top:0;height:120px;background:var(--lilac);border:3px solid var(--ink);border-radius:20px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 1.2rem 1rem}
+.slot{position:absolute;left:50%;bottom:34px;width:240px;margin-left:-120px;height:12px;background:var(--ink);border-radius:6px}
+.led{width:14px;height:14px;border-radius:50%;background:#bbb;border:2px solid var(--ink)}
+.printer.go .led{background:#6ee79b;animation:blink .35s infinite}
+@keyframes blink{50%{opacity:.3}}
+.printer.go .body{animation:buzz .08s infinite}
+.printer.done .body{animation:none}
+@keyframes buzz{50%{transform:translate(1px,1px)}}
+.press .btn{margin-top:1rem}
+.press .btn[disabled]{opacity:.6;pointer-events:none}
+
+/* basket + footer */
+.basket{position:fixed;left:14px;bottom:14px;z-index:80;background:#fff;border:3px solid var(--berry);border-radius:999px;padding:.35rem .9rem .35rem .5rem;display:flex;align-items:center;gap:.4rem;font-weight:700;box-shadow:0 4px 0 var(--deep)}
+.basket.bump{animation:bump .35s}
+@keyframes bump{50%{transform:scale(1.15) rotate(-4deg)}}
+footer{text-align:center;padding:2rem 1rem 4.5rem;background:var(--pink);font-family:'Caveat Brush';font-size:1.3rem;color:var(--deep)}
+
+@media(max-width:640px){.bear .sign{display:none}.fl.hide-sm{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.printer .paper{height:230px}}
+</style>
+</head>
+<body>
+
+<!-- SVG sprites -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="berry" viewBox="0 0 100 110">
+    <path d="M50 102C20 90 5 60 13 41c6-14 23-16 37-8 14-8 31-6 37 8 8 19-7 49-37 61z" fill="#ff6f91"/>
+    <path d="M28 40c-4 10-2 22 4 32" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".55"/>
+    <g fill="#fff3b0"><ellipse cx="38" cy="55" rx="2.5" ry="4"/><ellipse cx="55" cy="50" rx="2.5" ry="4"/><ellipse cx="68" cy="62" rx="2.5" ry="4"/><ellipse cx="48" cy="72" rx="2.5" ry="4"/><ellipse cx="60" cy="84" rx="2.5" ry="4"/><ellipse cx="34" cy="76" rx="2.5" ry="4"/></g>
+    <path d="M50 34L32 20l14 3-4-15 8 11 8-11-4 15 14-3z" fill="#8fd19e" stroke="#6bbd82" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="flower" viewBox="0 0 100 100">
+    <g fill="#fff"><circle cx="50" cy="22" r="19"/><circle cx="78" cy="42" r="19"/><circle cx="67" cy="75" r="19"/><circle cx="33" cy="75" r="19"/><circle cx="22" cy="42" r="19"/></g>
+    <g fill="none" stroke="#ffc2d1" stroke-width="3"><circle cx="50" cy="22" r="19"/><circle cx="78" cy="42" r="19"/><circle cx="67" cy="75" r="19"/><circle cx="33" cy="75" r="19"/><circle cx="22" cy="42" r="19"/></g>
+    <circle cx="50" cy="50" r="14" fill="#ffd96b"/>
+  </symbol>
+  <symbol id="star" viewBox="0 0 40 40"><path d="M20 0c1.5 11 9 18.500 20 20-11 1.500-18.500 9-20 20-1.500-11-9-18.500-20-20C11 18.500 18.500 11 20 0z" fill="#fff" stroke="#ffd96b" stroke-width="2"/></symbol>
+  <symbol id="bow" viewBox="0 0 60 40"><path d="M30 20C20 4 2 2 4 20c2 18 20 16 26 0zm0 0c10-16 28-18 26 0-2 18-20 16-26 0z" fill="#ff6f91"/><circle cx="30" cy="20" r="6" fill="#c9406a"/></symbol>
+</svg>
+
+<header class="awning">
+  <div class="top"></div><div class="fringe"></div>
+  <nav aria-label="Main">
+    <a href="#about">About me</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#rates">Rates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hand">hello! I'm [Your Name] ♡</span>
+    <h1>Fresh-picked <span class="shine">design</span></h1>
+    <p class="lede">Graphic design, website UI, web development and branding, made small-batch and sweet. Pick a berry, peek in the crates, stay a while.</p>
+    <div class="btns">
+      <a class="btn" href="#portfolio">Peek in the crates</a>
+      <a class="btn alt" href="#contact">Say hi</a>
+    </div>
+  </div>
+
+  <div class="bear" aria-hidden="true">
+    <div class="sign">fresh today!</div>
+    <svg class="i" viewBox="0 0 200 170">
+      <circle cx="42" cy="40" r="22" fill="#d9a77c"/><circle cx="42" cy="40" r="12" fill="#ffc2d1"/>
+      <circle cx="158" cy="40" r="22" fill="#d9a77c"/><circle cx="158" cy="40" r="12" fill="#ffc2d1"/>
+      <circle cx="100" cy="80" r="62" fill="#e7b88e"/>
+      <ellipse cx="100" cy="100" rx="28" ry="22" fill="#fff0e2"/>
+      <ellipse cx="100" cy="92" rx="8" ry="6" fill="#6b2d44"/>
+      <path d="M100 98v8m-9 0q9 8 18 0" stroke="#6b2d44" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g id="eyes" fill="#6b2d44"><circle id="eL" cx="76" cy="72" r="6"/><circle id="eR" cx="124" cy="72" r="6"/></g>
+      <circle cx="60" cy="92" r="9" fill="#ff9db5" opacity=".6"/><circle cx="140" cy="92" r="9" fill="#ff9db5" opacity=".6"/>
+      <use href="#bow" x="118" y="8" width="50" height="34"/>
+      <path d="M0 170v-20q0-24 40-24h120q40 0 40 24v20z" fill="#fff"/>
+      <g class="arm"><ellipse cx="30" cy="140" rx="20" ry="16" fill="#e7b88e"/></g>
+    </svg>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<section class="counter" id="portfolio">
+  <h2>Today's crates</h2>
+  <div class="crates">
+    <a class="crate" href="#" style="--c:var(--butter);--r:-3deg">
+      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
+      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 100"><use href="#flower"/></svg></div>
+      <h3>Graphic Design</h3><p>Posters, packaging &amp; little things with big charm.</p>
+    </a>
+    <a class="crate" href="#" style="--c:var(--lilac);--r:2deg">
+      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
+      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 110"><use href="#berry"/></svg></div>
+      <h3>UI Design</h3><p>Website layouts that feel soft, clear and playful.</p>
+    </a>
+    <a class="crate" href="#" style="--c:#d6f3dd;--r:-2deg">
+      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
+      <div class="ico"><svg class="i" width="52" height="52" viewBox="0 0 100 100"><text x="50" y="66" font-size="52" text-anchor="middle" font-family="Fredoka" font-weight="700" fill="#c9406a">&lt;/&gt;</text></svg></div>
+      <h3>Website Development</h3><p>Designs baked into fast, interactive sites.</p>
+    </a>
+    <a class="crate" href="#" style="--c:var(--pink);--r:3deg">
+      <svg class="tag" viewBox="0 0 40 40"><use href="#star"/></svg>
+      <div class="ico"><svg class="i" width="56" height="40" viewBox="0 0 60 40"><use href="#bow"/></svg></div>
+      <h3>Branding</h3><p>Logos, colors &amp; voices tied up with a bow.</p>
+    </a>
+  </div>
+</section>
+
+<section class="press" id="about">
+  <h2>My resume, fresh off the press</h2>
+  <p class="sub">Tap the button and watch it print.</p>
+  <div class="printer" id="printer">
+    <div class="paper"><div>
+      <b>[Your Name]</b>
+      <span>Designer &amp; developer</span>
+      <i></i><i style="width:80%"></i><i style="width:90%"></i><i style="width:60%"></i>
+      <b style="margin-top:.6rem">Hello!</b>
+      <i style="width:85%"></i><i></i><i style="width:70%"></i>
+      <svg class="i" width="34" height="38" viewBox="0 0 100 110" style="margin:.5rem auto 0"><use href="#berry"/></svg>
+    </div></div>
+    <div class="body"><span class="led"></span><span style="font-family:'Caveat Brush';font-size:1.3rem;color:var(--ink)">berry printer</span><span class="led"></span></div>
+    <div class="slot"></div>
+  </div>
+  <button class="btn" id="printBtn" style="font-family:inherit;font-size:1rem;cursor:pointer">Print my resume</button>
+</section>
+</main>
+
+<footer id="contact">made with strawberries &amp; love ♡ [Your Name] · rates &amp; contact pages coming soon</footer>
+
+<div class="basket" id="basket" aria-live="polite"><svg class="i" width="26" height="28" viewBox="0 0 100 110"><use href="#berry"/></svg><span id="count">0</span> picked</div>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s){return document.querySelector(s)};
+
+  // marquee
+  var words = ['graphic design','ui design','website development','branding'], h='';
+  for(var r=0;r<2;r++) words.forEach(function(w){ h+='<span>'+w+' <svg width="22" height="24" viewBox="0 0 100 110"><use href="#berry"/></svg> <svg width="22" height="22" viewBox="0 0 100 100"><use href="#flower"/></svg></span>'; });
+  $('#track').innerHTML = h + h;
+
+  // floating decor (berries are clickable)
+  var hero = $('.hero');
+  var items = [
+    ['berry',70,'8%','14%',1,'pick'],['berry',54,'80%','12%',1,'pick'],['berry',60,'6%','62%',1,'pick'],
+    ['berry',46,'66%','72%',1,'pick'],['berry',40,'30%','82%',1,'pick hide-sm'],
+    ['flower',60,'88%','44%',0,''],['flower',44,'20%','8%',0,'hide-sm'],['flower',50,'42%','90%',0,'hide-sm'],
+    ['star',26,'24%','30%',0,''],['star',20,'74%','30%',0,''],['star',30,'55%','6%',0,''],['star',22,'12%','42%',0,'hide-sm'],['star',24,'92%','78%',0,'hide-sm']
+  ];
+  var els = [];
+  items.forEach(function(d,i){
+    var e = document.createElement('div');
+    e.className = 'fl ' + d[5];
+    e.style.left = d[2]; e.style.top = d[3];
+    e.dataset.depth = (0.2 + (i%4)*0.18).toFixed(2);
+    var vb = d[0]==='berry' ? '0 0 100 110' : d[0]==='flower' ? '0 0 100 100' : '0 0 40 40';
+    e.innerHTML = '<svg class="i" width="'+d[1]+'" height="'+d[1]+'" viewBox="'+vb+'" style="--d:'+(5+i%4)+'s"><use href="#'+d[0]+'"/></svg>';
+    if(d[4]){ e.setAttribute('role','button'); e.setAttribute('tabindex','0'); e.setAttribute('aria-label','Pick this strawberry'); }
+    hero.appendChild(e); els.push(e);
+  });
+
+  // picking berries
+  var n = 0;
+  function pick(e, x, y){
+    n++; $('#count').textContent = n;
+    var b = $('#basket'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+    var p = document.createElement('div'); p.className='pop';
+    p.textContent = ['yum!','so sweet!','pick me!','berry good!'][n%4];
+    p.style.left = x+'px'; p.style.top = y+'px'; document.body.appendChild(p);
+    setTimeout(function(){p.remove()},1000);
+    for(var k=0;k<6;k++) sparkle(x+(Math.random()-.5)*60, y+(Math.random()-.5)*60);
+    e.style.transition='opacity .3s,transform .3s'; e.style.opacity=0; e.style.pointerEvents='none';
+    setTimeout(function(){ e.style.opacity=1; e.style.pointerEvents=''; }, 4000); // regrows
+  }
+  els.forEach(function(e){
+    if(!e.classList.contains('pick')) return;
+    e.addEventListener('click', function(ev){ pick(e, ev.clientX, ev.clientY); });
+    e.addEventListener('keydown', function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); var r=e.getBoundingClientRect(); pick(e,r.left+r.width/2,r.top); } });
+  });
+
+  // sparkles
+  function sparkle(x,y){
+    var s = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    s.setAttribute('class','spark'); s.setAttribute('viewBox','0 0 40 40');
+    s.innerHTML = '<use href="#star"/>'; s.style.left=x+'px'; s.style.top=y+'px';
+    document.body.appendChild(s); setTimeout(function(){s.remove()},800);
+  }
+  var last = 0;
+  if(!reduce) addEventListener('mousemove', function(ev){
+    var t = Date.now(); if(t-last<55) return; last=t; sparkle(ev.clientX, ev.clientY);
+  });
+
+  // parallax + bear eyes
+  var eL=$('#eL'), eR=$('#eR');
+  if(!reduce) addEventListener('mousemove', function(ev){
+    var cx = (ev.clientX/innerWidth - .5), cy = (ev.clientY/innerHeight - .5);
+    els.forEach(function(e){ var d = +e.dataset.depth*80; e.style.transform='translate('+(-cx*d)+'px,'+(-cy*d)+'px)'; });
+    var dx = cx*10, dy = cy*8;
+    eL.setAttribute('transform','translate('+dx+' '+dy+')'); eR.setAttribute('transform','translate('+dx+' '+dy+')');
+  });
+
+  // crates tilt toward cursor
+  document.querySelectorAll('.crate').forEach(function(c){
+    c.addEventListener('mousemove', function(ev){
+      var r = c.getBoundingClientRect(), x=(ev.clientX-r.left)/r.width-.5, y=(ev.clientY-r.top)/r.height-.5;
+      c.style.transform='translateY(-8px) perspective(600px) rotateY('+(x*12)+'deg) rotateX('+(-y*12)+'deg)';
+    });
+    c.addEventListener('mouseleave', function(){ c.style.transform=''; });
+  });
+
+  // printer
+  var pr = $('#printer'), btn = $('#printBtn');
+  btn.addEventListener('click', function(){
+    pr.classList.remove('go','done'); void pr.offsetWidth;
+    btn.disabled = true; btn.textContent = 'Printing…'; pr.classList.add('go');
+    setTimeout(function(){
+      pr.classList.remove('go'); pr.classList.add('done');
+      btn.disabled = false; btn.textContent = 'Print it again!';
+      var r = pr.getBoundingClientRect();
+      for(var i=0;i<14;i++) sparkle(r.left+r.width/2+(Math.random()-.5)*260, r.top+60+Math.random()*200);
+    }, reduce?0:2700);
+  });
+})();
+</script>
+</body>
+</html>
